@@ -3,7 +3,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-import asyncio
+
 from crud_functions import *
 
 api = ''
@@ -105,6 +105,7 @@ async def get_buying_list(message):
 @dp.callback_query_handler(text='product_buying')
 async def send_confirm_message(call):
     await call.message.answer('Вы успешно приобрели продукт!')
+    await call.answer()
 
 @dp.message_handler()
 async def all_messages(message):
